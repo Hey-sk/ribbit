@@ -2,11 +2,10 @@ class Settings:
 
     def __init__(self):
         #game tiles
-        self.col_spaces = 16
-        self.row_spaces = 21
+        self.col_spaces = 15
+        self.row_spaces = 13
         
         #frog settings
-        self.movement_speed = 1.5
         self.frog_size = 50
 
         #screen settings
