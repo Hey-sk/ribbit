@@ -15,4 +15,7 @@ class Settings:
         self.screen_size = (self.screen_width, self.screen_height)
         self.bg_color = (40, 40, 40)
 
+        #log_speed
+        self.log_speed_modifier = 1
+
         
