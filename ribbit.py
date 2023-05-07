@@ -17,11 +17,12 @@ class Ribbit:
         self.frog = Frog(self)
         self.water = Water(self)
         self.goal = Goal(self, 0, 0)
-        self.log = Log(self, 250)
+        self.log = Log(self)
         self.border = Border(self, 0, 0)
         self.all_goals = pygame.sprite.Group()
         self.all_logs = pygame.sprite.Group()
         self.all_borders = pygame.sprite.Group()
+        self._create_logs()
         self.clock = pygame.time.Clock()
         
 
@@ -33,7 +34,7 @@ class Ribbit:
             self.clock.tick(60)
             #render assets
             self.water.blit()
-            self._create_logs()
+            self.all_logs.draw(self.screen)
             self._create_borders()
             self.all_goals.draw(self.screen)
             self.frog.blitme()
@@ -67,17 +68,28 @@ class Ribbit:
         if event.key == pygame.K_ESCAPE:
             sys.exit()
     
+    
+    def _create_log(self, x_pos, y_pos, speed_modifier = 1):
+        new_log = Log(self, speed_modifier)
+        new_log.rect.x = x_pos
+        new_log.rect.y = y_pos
+        print(self.all_logs.sprites())
+        self.all_logs.add(new_log)
+    
     def _create_logs(self):
-        self.all_logs.add(self.log)
-        for log in self.all_logs.sprites():
-            if log.rect.x == 400:
-                self.all_logs.add(Log(self, 250))
-                self.all_logs.add(Log(self, 150))
-            if log.rect.x == 200 and log.rect.y % 100 != 0:
-                self.all_logs.add(Log(self, 200))
-                self.all_logs.add(Log(self, 100))
-        self.all_logs.draw(self.screen)
-
+        x_pos = self.settings.screen_width
+        y_pos = 50
+        log_gap = 200
+        speed_modifier = 3
+        for i in range(4):
+            y_pos += 50
+            if y_pos % 100:
+                for i in range(4):
+                    self._create_log(x_pos + (log_gap * i), y_pos)
+            else:
+                for i in range(4):
+                    self._create_log(x_pos + (log_gap * i), y_pos, speed_modifier)
+  
     def _create_borders(self):
         left_border = Border(self, 50, self.settings.screen_height)
         top_border = Border(self, self.settings.screen_width, 100)

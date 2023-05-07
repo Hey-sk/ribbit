@@ -13,7 +13,7 @@ class Settings:
         self.screen_height = self.frog_size * self.col_spaces
     
         self.screen_size = (self.screen_width, self.screen_height)
-        self.bg_color = (40, 40, 40)
+        self.bg_color = (150, 150, 150)
 
         #log_speed
         self.log_speed_modifier = 1
