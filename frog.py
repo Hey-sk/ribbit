@@ -27,7 +27,7 @@ class Frog:
 
     def center(self):
         self.rect.left = int(self.settings.row_spaces/2) * self.size
-        self.rect.bottom = self.screen_rect.bottom - self.size
+        self.rect.bottom = self.screen_rect.bottom - self.size * 2
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
