@@ -2,7 +2,6 @@ import pygame
 from pygame.sprite import Sprite
 
 class Border(Sprite):
-
     def __init__(self, ribbit, len, wid):
         super().__init__()
         self.screen = ribbit.screen

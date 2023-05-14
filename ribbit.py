@@ -130,6 +130,7 @@ class Ribbit:
         top_border = Border(self, self.settings.screen_width, 100)
         right_border = Border(self, 50, self.settings.screen_height)
         right_border.rect.right = self.settings.screen_width
+        
         self.all_borders.add(left_border)
         self.all_borders.add(top_border)
         self.all_borders.add(right_border)
